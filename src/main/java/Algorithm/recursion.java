@@ -1,5 +1,7 @@
 package Algorithm;
 
+import javax.annotation.processing.RoundEnvironment;
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
@@ -85,12 +87,13 @@ public class recursion {
 
     //optimization
     public static int Cache(int n) {
-        int[] cache = new int[n+1];
+        int[] cache = new int[n + 1];
         Arrays.fill(cache, -1);
         cache[0] = 0;
         cache[1] = 1;
         return Fibonacci1(n, cache);
     }
+
     private static int Fibonacci1(int n, int[] cache) {
 //        if (n == 1) return 0;
 //        if (n == 2) return 1;
@@ -102,13 +105,83 @@ public class recursion {
     }
 
 
-    public int sum(int n){
-        if(n==1) return 1;
-        return n+sum(n-1);
+    public int sum(int n) {
+        if (n == 1) return 1;
+        return n + sum(n - 1);
     }
 
 
+    //Tower of Hanol
+    public static void Hanol() {
 
+    }
+
+//    //杨辉三角
+//    public int yanghui(int i, int j) {
+//        if (i == j || j == 1 || i == 1) return 1;
+//        return yanghui(i - 1, j - 1) + yanghui(i - 1, j);
+//    }
+//
+//    public void printYangHuiTriangle(int rows) {
+//        for (int i = 1; i <= rows; i++) {
+//            for (int k = 1; k <= 2 * (rows - i); k++) {
+//                System.out.print(" ");
+//            }
+//            for (int j = 1; j <= i; j++) {
+//                System.out.printf("%-4d", yanghui(i, j));//-代表左对齐
+//            }
+//            System.out.println();
+//        }
+//    }
+
+//    //杨辉三角-optimization
+//    public int yanghui(int[][] triangle,int i, int j) {
+//        if (i == j || j == 0 || i == 0) return 1;
+//        if(triangle[i][j]!=0){
+//            return triangle[i][j];
+//        }
+//        triangle[i][j]=yanghui(triangle,i - 1, j - 1) + yanghui(triangle,i - 1, j);
+//        return triangle[i][j];
+//    }
+//
+//    public void printYangHuiTriangle(int rows) {
+//        int[][] triangle=new int[rows][rows];
+//        for (int i = 0; i < rows; i++) {
+//            for (int k = 0; k < 2 * (rows - i); k++) {
+//                System.out.print(" ");
+//            }
+//            for (int j = 0; j < i; j++) {
+//                System.out.printf("%-4d", yanghui(triangle,i, j));//-代表左对齐
+//            }
+//            System.out.println();
+//        }
+//    }
+
+
+    //    杨辉三角- optimize more
+    public int yanghui(int[] triangle, int i, int j) {
+        if (i == j || j == 0 || i == 0) return 1;
+        if (triangle[i] != 0) {
+            return triangle[i];
+        }
+        triangle[j] = yanghui(triangle, i,j - 1) + yanghui(triangle, i, j);
+        return triangle[i];
+    }
+
+    public void printYangHuiTriangle(int rows) {
+        int[] triangle = new int[rows];
+        for (int i = 0; i < rows; i++) {
+            for (int k = 0; k < 2 * (rows - i); k++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < i; j++) {
+                System.out.printf("%-4d", yanghui(triangle, i, j));//-代表左对齐
+            }
+            System.out.println();
+        }
+    }
+
+    //82!!!!!!!!!!difficult!!!
 
 
 }

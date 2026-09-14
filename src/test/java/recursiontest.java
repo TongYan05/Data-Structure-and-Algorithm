@@ -14,16 +14,18 @@ public class recursiontest {
         recursion r = new recursion();
         System.out.println(r.factorial(-10));
     }
+
     @Test
     public void reverselyPrintString() throws IllegalAccessException {
         recursion r = new recursion();
         System.out.println(r.reverselyPrintString("123456789"));
     }
+
     @Test
     public void binarysearch() throws IllegalAccessException {
         recursion r = new recursion();
-        int[] a={1,2,3,4,5,6,7,8,9};
-        System.out.println(r.binarysearch(a,30,0,8));
+        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        System.out.println(r.binarysearch(a, 30, 0, 8));
     }
 
     @Test
@@ -45,11 +47,25 @@ public class recursiontest {
 
 
     @Test
-    public void test(){
+    public void test() {
         recursion r = new recursion();
         System.out.println(r.sum(1500000)); //stackOverFlowError 爆栈
 
     }
+
+    @Test
+    public void yanghui() {
+        recursion r = new recursion();
+//        System.out.println(r.yanghui(100, 1));
+//        System.out.println(r.yanghui(100, 100));
+//        System.out.println(r.yanghui(5, 3));
+//        System.out.println(r.yanghui(3, 2));
+        System.out.println("=====================================print======================================");
+        r.printYangHuiTriangle(15);
+    }
+
+
+
 
 
 }
