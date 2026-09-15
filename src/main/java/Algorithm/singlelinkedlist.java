@@ -153,10 +153,10 @@ public class singlelinkedlist implements Iterable<Integer> {
             while (node != null) {
                 if (i == index - 1) {
                     Node node1 = node.nextnode;// should be deleted
-                    if(node1.nextnode==null){
-                        node.nextnode=null;
+                    if (node1.nextnode == null) {
+                        node.nextnode = null;
                         return;
-                    }else {
+                    } else {
                         Node node2 = node1.nextnode;//should be connected
                         node1.nextnode = null;
                         node.nextnode = node2;
@@ -170,6 +170,24 @@ public class singlelinkedlist implements Iterable<Integer> {
             throw new IllegalAccessException(String.format("index %d out of bound", index));
         }
     }
+
+
+    //leetcode-> search for the middle node in a linkedlist
+    public Node searchMiddleNode(Node node) {
+        if (node == null) {
+            return node;
+        }
+        Node front = node;
+        Node aft = node;
+        while (aft != null&&aft.nextnode!=null) {
+            aft = aft.nextnode;
+            aft = aft.nextnode;
+            front=front.nextnode;
+        }
+        return front;
+    }
+
+
 
 
 }
