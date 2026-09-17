@@ -1,7 +1,5 @@
 package Algorithm;
 
-import java.security.DrbgParameters;
-import java.security.KeyFactorySpi;
 import java.util.Iterator;
 // have problem!!!!
 public class ArrayQueue<E> implements Queue<E>, Iterable<E> {
@@ -10,7 +8,8 @@ public class ArrayQueue<E> implements Queue<E>, Iterable<E> {
     private int head = 0;
     private int tail = 0;
 
-    ArrayQueue(int capacity) {
+    ArrayQueue() {
+        int capacity = 0;
         array = (E[]) new Object[capacity + 1];
     }
 
