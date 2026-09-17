@@ -18,15 +18,14 @@ public class Stack_Queue_LinkedList {
     //toArray(),size(),equal(),remove(),remove(Object c),removeAll(Collection c),addAll(Collection c)
     //isEmpty(),peek(),poll(),retainAll(Collection c),add(element),containsAll(Collection c),offer(element),contains(element),clear()
 
-    for Stack
     //poll(),peek(),remove(),offer(),getFirst(),getLast(),add(),addAll(Collection c),removeAll(Collection c),retainAll(Collection c)
     //containsAll(Collection c),size(),isEmpty(),toArray(),constainsAll(Collection c)
      */
 
 
 
-
-//    static void main(String[] args) {
+//
+//    public static void main(String[] args) {
 //        Deque<String> deque1 = new ArrayDeque<>();
 //
 //
@@ -107,25 +106,28 @@ public class Stack_Queue_LinkedList {
         @Override
         public String peek() { return "";}
     };
-//
-//    static void main(String[] args) {
-//        Deque<Integer> deque=new ArrayDeque<>();
-//        deque.add(1);deque.add(2);deque.add(3);deque.add(4);
-//        deque.offer(5);deque.offer(6);deque.offer(7);deque.offer(8);
-//        deque.addFirst(0);deque.addFirst(-1);
-//        deque.addLast(9);deque.addLast(10);
-//        System.out.println(deque.remove(1)+" "+deque.removeFirst()+" "+deque.removeLast());
-//        System.out.println(deque.add(11));
-//        System.out.println(deque);
-//        System.out.println(deque.offerFirst(0)+" "+deque.offerLast(12));
-//        System.out.println(deque);
-//        System.out.println(deque.offer(13)+" "+deque.offerLast(14)+" "+deque.offerFirst(-1));
-//        System.out.println(deque);
-//        System.out.println(deque.getFirst()+" "+deque.getLast()+" "+deque.peek()+" "+deque.peekFirst()+" "+" "+deque.peekLast()+" ");
-//        System.out.println(deque);
-//        System.out.println(deque.poll()+" "+deque.pollFirst()+" "+deque.pollLast());
-//        System.out.println(deque);
-//    }
+
+    static void main(String[] args) {
+        Deque<Integer> deque=new ArrayDeque<>();
+        deque.add(1);deque.add(2);deque.add(3);deque.add(4);
+        deque.offer(5);deque.offer(6);deque.offer(7);deque.offer(8);
+        deque.addFirst(0);deque.addFirst(-1);
+        deque.addLast(9);deque.addLast(10);
+        System.out.println(deque.element());
+
+        System.out.println(deque);
+        System.out.println(deque.remove(1)+" "+deque.removeFirst()+" "+deque.removeLast());
+        System.out.println(deque.add(11));
+        System.out.println(deque);
+        System.out.println(deque.offerFirst(0)+" "+deque.offerLast(12));
+        System.out.println(deque);
+        System.out.println(deque.offer(13)+" "+deque.offerLast(14)+" "+deque.offerFirst(-1));
+        System.out.println(deque);
+        System.out.println(deque.getFirst()+" "+deque.getLast()+" "+deque.peek()+" "+deque.peekFirst()+" "+" "+deque.peekLast()+" ");
+        System.out.println(deque);
+        System.out.println(deque.poll()+" "+deque.pollFirst()+" "+deque.pollLast());
+        System.out.println(deque);
+    }
 
 
 
@@ -171,14 +173,14 @@ public class Stack_Queue_LinkedList {
         };
 
 
-    static void main(String[] args) {
-        PriorityQueue<String> p=new PriorityQueue<>();
-        List<String> list=new ArrayList<>();
-        list.add("d");list.add("e");list.add("f");list.add("g");
-        p.add("c");p.add("b");p.add("a");
-        System.out.println(p.poll());
-        System.out.println(p.poll());
-        System.out.println(p.poll());
+//    static void main(String[] args) {
+//        PriorityQueue<String> p=new PriorityQueue<>();
+//        List<String> list=new ArrayList<>();
+//        list.add("d");list.add("e");list.add("f");list.add("g");
+//        p.add("c");p.add("b");p.add("a");
+//        System.out.println(p.poll());
+//        System.out.println(p.poll());
+//        System.out.println(p.poll());
 //        System.out.println(p.addAll(list) );
 //        System.out.println(p);
 //        System.out.println(p.offer("f"));
@@ -188,8 +190,8 @@ public class Stack_Queue_LinkedList {
 //        System.out.println(p);
 //        System.out.println(p.removeAll(list));
 //        System.out.println(p);
-
-    }
+//
+//    }
 
     PriorityQueue<String> pq = new PriorityQueue<>() {
         @Override public boolean add(String string) { return false; }
