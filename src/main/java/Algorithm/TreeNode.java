@@ -1,9 +1,9 @@
 package Algorithm;
 
 public class TreeNode {
-    private int value;
-    private TreeNode left;
-    private TreeNode right;
+    public int value;
+    public TreeNode left;
+    public TreeNode right;
 
     TreeNode() {
     }
@@ -20,7 +20,7 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        return String.valueOf(value);
+        return String.valueOf(this.value);
     }
 
     public static void main(String[] args) {
