@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import java.util.concurrent.DelayQueue;
 
 public class BinarySearchTree {
     BST root;
@@ -141,30 +142,122 @@ public class BinarySearchTree {
         }//find the target node
         if (pointer == null) return null;
         if (pointer.left == null/* && pointer.right != null*/) {//when 3: both of the two logic can work so there is a /**/
-            shift(father,pointer,pointer.right);
-        }else if (pointer.right == null /*&& pointer.left != null*/) {
-            shift(father,pointer,pointer.left);
-        }else {
+            shift(father, pointer, pointer.right);
+        } else if (pointer.right == null /*&& pointer.left != null*/) {
+            shift(father, pointer, pointer.left);
+        } else {
             //1 找到后继节点
-            BST b1=pointer.right;
-            while (b1.left!=null){
-                b1=b1.left;
+            BST b1 = pointer.right;
+            while (b1.left != null) {
+                b1 = b1.left;
             }
             // 2 处理后继节点的后面的节点
+            BST bParent = pointer;
+            while (bParent != pointer) {// prove they are not adjacent
+                shift(bParent, b1, b1.right);
+                b1.right = pointer.right;
+            }
             // 3 后继节点取代被删除节点
+            shift(father, pointer, b1);
+            b1.left = pointer.left;
         }
         return pointer.value;// return the value of removed node
     }
 
     private void shift(BST father, BST removed, BST son) {
         if (father == null) {//father is the null
-            root=son;
-        }else if(removed==father.left){// this can be understood
-            son=father.left;
-        }else if(removed==father.right){// this can be understood
-            son=father.right;
+            root = son;
+        } else if (removed == father.left) {// this can be understood
+            son = father.left;
+        } else if (removed == father.right) {// this can be understood
+            son = father.right;
         }
     }
+
+
+    // 找 < key 的所有 value
+    public List<Object> less(int key) {
+        ArrayList<Object> result = new ArrayList<>();
+        BST p = root;
+        Deque<BST> d = new ArrayDeque<>();
+        while (!d.isEmpty() || p != null) {
+            if (p != null) {
+                d.push(p);
+                p = p.left;
+            } else {
+                BST b = d.pop();
+                if (b.key < key) {
+                    result.add(b.value);
+                }
+                p = b.right;
+            }
+        }
+        return result;
+    }
+
+    // 找 > key 的所有 value
+    public List<Object> greater(int key) {
+        ArrayList<Object> result = new ArrayList<>();
+        BST p = root;
+        Deque<BST> d = new ArrayDeque<>();
+        while (!d.isEmpty() || p != null) {
+            if (p != null) {
+                d.push(p);
+                p = p.left;
+            } else {
+                BST b = d.pop();
+                if (b.key > key) {
+                    result.add(b.value);
+                }
+                p = b.right;
+            }
+        }
+        return result;
+    }
+
+    // 找 >= key1 且 <= key2 的所有值
+    public List<Object> between(int key1, int key2) {
+        ArrayList<Object> result = new ArrayList<>();
+        BST p = root;
+        Deque<BST> d = new ArrayDeque<>();
+        while (!d.isEmpty() || p != null) {
+            if (p != null) {
+                d.push(p);
+                p = p.left;
+            } else {
+                BST b = d.pop();
+                if (b.key >= key1 && b.key <= key2) {
+                    result.add(b.value);
+                }
+                p = b.right;
+            }
+        }
+        return result;
+    }
+
+
+    //将中序遍历的数组转化成二叉树
+    public TreeNode buildTree(int[] nums){
+        TreeNode root=new TreeNode(nums[0]);
+        for (int i = 1; i < nums.length; i++) {
+            insert(root,nums[i]);
+        }
+        return root;
+    }
+    public TreeNode insert(TreeNode root,int val){
+        if(root==null) return new TreeNode(val);
+        if(root.value<val){
+            root.right=insert(root.right,val);
+        }else if(root.value>val){
+            root.left=insert(root.left,val);
+        }
+        return root;
+    }
+
+
+
+
+
 
 
 }
