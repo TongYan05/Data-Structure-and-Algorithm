@@ -43,14 +43,16 @@ public class SlidingWindow {
 
 
     //      Definition for singly-linked list. 142. 环形链表 II
-    class ListNode {
+    public class ListNode {
         int val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;
         }
     }
+
     public class Solution2 {
         public ListNode detectCycle(ListNode head) {
             if (head == null || head.next == null) return null;
@@ -72,8 +74,34 @@ public class SlidingWindow {
     }
 
 
-}
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) {
+     * val = x;
+     * next = null;
+     * }
+     * }
+     */
+// 160. 相交链表
+    public class Solution3 {
+        public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+            if (headA == null || headB == null) return null;
+            ListNode pa = headA;
+            ListNode pb = headB;
+            while (pa != pb) {
+                if (pa != null) pa = pa.next;
+                else pa = headB;
+                if (pb != null) pb = pb.next;
+                else pb = headA;
+            }
+            return pa;
+        }
+    }
 
+}
 /*
 git add .
 git commit -m "algorithm"
