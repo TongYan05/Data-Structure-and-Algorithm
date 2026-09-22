@@ -1,5 +1,7 @@
 package Algorithm;
 
+import jdk.dynalink.linker.GuardedInvocationTransformer;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,4 +40,42 @@ public class SlidingWindow {
             return res;
         }
     }
+
+
+    //      Definition for singly-linked list. 142. 环形链表 II
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
+    public class Solution2 {
+        public ListNode detectCycle(ListNode head) {
+            if (head == null || head.next == null) return null;
+            ListNode i = head;
+            ListNode j = head;
+            do {
+                j = j.next;
+                j = j.next;
+                if (j == null || j.next == null) return null;
+                i = i.next;
+            } while (i != j);
+            i = head;
+            while (i != j) {
+                j = j.next;
+                i = i.next;
+            }
+            return i;
+        }
+    }
+
+
 }
+
+/*
+git add .
+git commit -m "algorithm"
+git push
+ */
