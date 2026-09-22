@@ -99,8 +99,57 @@ public class SlidingWindow {
             }
             return pa;
         }
-    }
 
+
+        // 2. 两数相加
+
+        /**
+         * Definition for singly-linked list.
+         * public class ListNode {
+         * int val;
+         * ListNode next;
+         * ListNode() {}
+         * ListNode(int val) { this.val = val; }
+         * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+         * }
+         */
+        class Solution5 {
+            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+                ListNode i = l1;
+                ListNode j = l2;
+                ListNode result = null;
+                int add = 0;
+
+                ListNode dummy = new ListNode(0);
+                ListNode tail = dummy;
+
+                while (i != null && j != null) {
+                    int sum = i.val + j.val + add;
+                    add = sum / 10;
+                    tail.next = new ListNode(sum % 10);
+                    tail = tail.next;
+
+                    i = i.next;
+                    j = j.next;
+                }
+
+                ListNode rest = (i != null) ? i : j;
+                while (rest != null) {
+                    int sum = rest.val + add;
+                    add = sum / 10;
+                    tail.next = new ListNode(sum % 10);
+                    tail = tail.next;
+                    rest = rest.next;
+                }
+                if (add > 0) {
+                    tail.next = new ListNode(add);
+                }
+                return dummy.next;
+            }
+        }
+
+
+    }
 }
 /*
 git add .
