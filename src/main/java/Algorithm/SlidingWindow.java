@@ -99,57 +99,86 @@ public class SlidingWindow {
             }
             return pa;
         }
-
-
-        // 2. 两数相加
-
-        /**
-         * Definition for singly-linked list.
-         * public class ListNode {
-         * int val;
-         * ListNode next;
-         * ListNode() {}
-         * ListNode(int val) { this.val = val; }
-         * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-         * }
-         */
-        class Solution5 {
-            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-                ListNode i = l1;
-                ListNode j = l2;
-                ListNode result = null;
-                int add = 0;
-
-                ListNode dummy = new ListNode(0);
-                ListNode tail = dummy;
-
-                while (i != null && j != null) {
-                    int sum = i.val + j.val + add;
-                    add = sum / 10;
-                    tail.next = new ListNode(sum % 10);
-                    tail = tail.next;
-
-                    i = i.next;
-                    j = j.next;
-                }
-
-                ListNode rest = (i != null) ? i : j;
-                while (rest != null) {
-                    int sum = rest.val + add;
-                    add = sum / 10;
-                    tail.next = new ListNode(sum % 10);
-                    tail = tail.next;
-                    rest = rest.next;
-                }
-                if (add > 0) {
-                    tail.next = new ListNode(add);
-                }
-                return dummy.next;
-            }
-        }
-
-
     }
+
+    // 2. 两数相加
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution5 {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            ListNode i = l1;
+            ListNode j = l2;
+            ListNode result = null;
+            int add = 0;
+
+            ListNode dummy = new ListNode(0);
+            ListNode tail = dummy;
+
+            while (i != null && j != null) {
+                int sum = i.val + j.val + add;
+                add = sum / 10;
+                tail.next = new ListNode(sum % 10);
+                tail = tail.next;
+
+                i = i.next;
+                j = j.next;
+            }
+
+            ListNode rest = (i != null) ? i : j;
+            while (rest != null) {
+                int sum = rest.val + add;
+                add = sum / 10;
+                tail.next = new ListNode(sum % 10);
+                tail = tail.next;
+                rest = rest.next;
+            }
+            if (add > 0) {
+                tail.next = new ListNode(add);
+            }
+            return dummy.next;
+        }
+    }
+
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution7 {
+        public ListNode swapPairs(ListNode head) {
+            if (head == null || head.next == null) return head;//排除少于2个节点的情况
+            ListNode pre = new ListNode(-1, head);
+            ListNode pointer = pre;
+            while (pointer.next != null && pointer.next.next != null) {
+                ListNode i = pointer.next;
+                ListNode j = i.next;
+                ListNode k = j.next;
+                i.next = k;
+                j.next = i;
+                pointer.next = j;
+                pointer = i;
+                //相当于有四个节点
+            }
+            return pre.next;
+        }
+    }
+
+
 }
 /*
 git add .
