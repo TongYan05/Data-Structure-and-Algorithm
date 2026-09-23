@@ -158,6 +158,7 @@ public class SlidingWindow {
         }
     }
 
+    //24. 两两交换链表中的节点
     class Solution7 {
         public ListNode swapPairs(ListNode head) {
             if (head == null || head.next == null) return head;//排除少于2个节点的情况
@@ -177,6 +178,32 @@ public class SlidingWindow {
         }
     }
 
+
+
+    // 33. 搜索旋转排序数组
+    class Solution8 {
+        public int search(int[] nums, int target) {
+            if(nums.length==0) return -1;
+            int i=0;
+            int j=nums.length-1;
+            while(i<=j){
+                int m=(i+j)>>>1;
+                if (nums[m]==target){
+                    return m;
+                }
+                else if(nums[m]<nums[i]){
+                    //m左边是无序的，右边是有序的
+                    if(target>nums[m] && target<=nums[j]) i=m+1;
+                    else j=m-1;
+                }else if(nums[m]>=nums[i]){
+                    //m左边是有序的
+                    if(target>=nums[i] && target<nums[m]) j=m-1;
+                    else i=m+1;
+                }
+            }
+            return -1;
+        }
+    }
 
 }
 /*
