@@ -179,31 +179,68 @@ public class SlidingWindow {
     }
 
 
-
     // 33. 搜索旋转排序数组
     class Solution8 {
         public int search(int[] nums, int target) {
-            if(nums.length==0) return -1;
-            int i=0;
-            int j=nums.length-1;
-            while(i<=j){
-                int m=(i+j)>>>1;
-                if (nums[m]==target){
+            if (nums.length == 0) return -1;
+            int i = 0;
+            int j = nums.length - 1;
+            while (i <= j) {
+                int m = (i + j) >>> 1;
+                if (nums[m] == target) {
                     return m;
-                }
-                else if(nums[m]<nums[i]){
+                } else if (nums[m] < nums[i]) {
                     //m左边是无序的，右边是有序的
-                    if(target>nums[m] && target<=nums[j]) i=m+1;
-                    else j=m-1;
-                }else if(nums[m]>=nums[i]){
+                    if (target > nums[m] && target <= nums[j]) i = m + 1;
+                    else j = m - 1;
+                } else if (nums[m] >= nums[i]) {
                     //m左边是有序的
-                    if(target>=nums[i] && target<nums[m]) j=m-1;
-                    else i=m+1;
+                    if (target >= nums[i] && target < nums[m]) j = m - 1;
+                    else i = m + 1;
                 }
             }
             return -1;
         }
     }
+
+
+    //70. 爬楼梯
+    class Solution9 {
+        public int climbStairs(int n) {
+            if (n == 0) return 1;
+            if (n == 1) return 1;
+            if (n == 2) return 2;
+            int[] nums = new int[n + 1];
+            return yanghui(nums, n);
+        }
+
+        private int yanghui(int[] nums, int n) {
+            if (n == 0) return 1;
+            if (n == 1) return 1;
+            if (nums[n] != 0) return nums[n];
+            nums[n] = yanghui(nums, n - 1) + yanghui(nums, n - 2);
+            return nums[n];
+        }
+    }
+/*
+
+n 方法数
+1	1
+2	2
+3	3
+4	5
+5	8
+6	13
+7	21
+8	34
+9	55
+10	89
+11	144
+*
+
+
+
+
 
 }
 /*
