@@ -42,16 +42,7 @@ public class SlidingWindow {
     }
 
 
-    //      Definition for singly-linked list. 142. 环形链表 II
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
+//    //      Definition for singly-linked list. 142. 环形链表 II
 
     public class Solution2 {
         public ListNode detectCycle(ListNode head) {
@@ -149,16 +140,24 @@ public class SlidingWindow {
     }
 
 
-    /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode() {}
-     * ListNode(int val) { this.val = val; }
-     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
-     */
+    //     Definition for singly-linked list.
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
     class Solution7 {
         public ListNode swapPairs(ListNode head) {
             if (head == null || head.next == null) return head;//排除少于2个节点的情况
