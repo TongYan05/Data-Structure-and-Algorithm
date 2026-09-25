@@ -93,4 +93,29 @@ public class BinarySearch {
 //1
 
 
+
+
+    //153. 寻找旋转排序数组中的最小值
+    class Solution1 {
+        public int findMin(int[] nums) {
+            int i=0;
+            int j=nums.length-1;
+            while(i<j){
+                int mid=(i+j)>>>1;
+                if(nums[mid]<nums[j]){//find the min then 以右边界
+                    // for the left it is acending order. the min is on the right side
+                    j=mid;
+                }else{
+                    i=mid+1;
+                }
+            }
+            return nums[i];
+        }
+    }
+
+
+
+
+
+
 }
