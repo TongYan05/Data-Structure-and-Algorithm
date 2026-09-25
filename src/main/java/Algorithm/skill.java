@@ -46,6 +46,24 @@ public class skill {
     }
 
 
+    //75. 颜色分类
+    class Solution {
+        public void sortColors(int[] nums) {
+            int i=0;
+            int j=0;
+            int k=0;
+            for(int x : nums) {
+                if(x==0) i++;
+                else if(x==1) j++;
+                else k++;
+            }
+            for(int m=0;m<nums.length;m++){
+                if(m >=0 && m<i) nums[m]=0;
+                else if(m>=i && m<i+j) nums[m]=1;
+                else nums[m]=2;
+            }
+        }
+    }
 
 }
 /*
