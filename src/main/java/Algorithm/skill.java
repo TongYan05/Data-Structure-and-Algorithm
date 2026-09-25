@@ -1,5 +1,7 @@
 package Algorithm;
 
+import java.util.Arrays;
+
 public class skill {
 
 
@@ -34,6 +36,14 @@ public class skill {
     }
 
 
+
+    //169. 多数元素
+    class Solution3 {
+        public int majorityElement(int[] nums) {
+            Arrays.sort(nums);
+            return nums[nums.length/2];
+        }
+    }
 
 
 
