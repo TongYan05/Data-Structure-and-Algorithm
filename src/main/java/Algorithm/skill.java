@@ -47,7 +47,7 @@ public class skill {
 
 
     //75. 颜色分类
-    class Solution {
+    class Solution4 {
         public void sortColors(int[] nums) {
             int i=0;
             int j=0;
@@ -64,6 +64,47 @@ public class skill {
             }
         }
     }
+
+    //73. 矩阵置零
+    class Solution5 {
+        public void setZeroes(int[][] matrix) {
+            boolean columnHasZero=false;
+            boolean rowHasZero=false;
+            for(int i=0;i<matrix.length;i++){
+                if(matrix[i][0]==0) columnHasZero=true;
+            }
+            for(int i=0;i<matrix[0].length;i++){
+                if(matrix[0][i]==0) rowHasZero=true;
+            }
+            for(int i=1;i<matrix.length;i++){
+                for(int j=1;j<matrix[0].length;j++){
+                    if(matrix[i][j]==0){
+                        matrix[0][j]=0;
+                        matrix[i][0]=0;
+                    }
+                }
+            }
+            for(int i=1;i<matrix.length;i++){
+                for(int j=1;j<matrix[0].length;j++){
+                    if(matrix[i][0]==0 || matrix[0][j]==0){
+                        matrix[i][j]=0;
+                    }
+                }
+            }
+            if(columnHasZero){
+                for(int i=0;i<matrix.length;i++){
+                    matrix[i][0]=0;
+                }
+            }
+            if(rowHasZero){
+                for(int i=0;i<matrix[0].length;i++){
+                    matrix[0][i]=0;
+                }
+            }
+        }
+    }
+
+
 
 }
 /*
