@@ -69,55 +69,50 @@ public class TreeTransversal {
 //        return Math.min(1+minDepth(root.left),1+minDepth(root.right));
 
         //层序遍历
-        if(root==null) return 0;
-        Deque<TreeNode> d=new ArrayDeque<>();
+        if (root == null) return 0;
+        Deque<TreeNode> d = new ArrayDeque<>();
         d.offer(root);
-        int deepth=0;
-        while(!d.isEmpty()){
-            int size=d.size();
+        int deepth = 0;
+        while (!d.isEmpty()) {
+            int size = d.size();
             deepth++;
-            for(int i=0;i<size;i++){
-                TreeNode t=d.poll();
-                if(t.left==null && t.right==null) return deepth;
-                if(t.left!=null) d.offer(t.left);
-                if(t.right!=null) d.offer(t.right);
+            for (int i = 0; i < size; i++) {
+                TreeNode t = d.poll();
+                if (t.left == null && t.right == null) return deepth;
+                if (t.left != null) d.offer(t.left);
+                if (t.right != null) d.offer(t.right);
             }
         }
         return deepth;
     }
 
     //invert the tree
-    public static TreeNode invert(TreeNode root){
-        if(root==null) return null;
-        TreeNode l=root.left;
+    public static TreeNode invert(TreeNode root) {
+        if (root == null) return null;
+        TreeNode l = root.left;
         TreeNode r = root.right;
-        root.left=r;
-        root.right=l;
+        root.left = r;
+        root.right = l;
         invert(root.left);
         invert(root.right);
         return root;
     }
 
 
-
-
-
-
-
     // max deepth  层序遍历
     public int maxDepth(TreeNode root) { // hard!!!
         // if(root==null) return 0;
         // return Math.max(maxDepth(root.left)+1,maxDepth(root.right)+1);
-        if(root==null) return 0;
-        Deque<TreeNode> d=new ArrayDeque<>();
+        if (root == null) return 0;
+        Deque<TreeNode> d = new ArrayDeque<>();
         d.offer(root);
-        int deepth=0;
-        while(!d.isEmpty()){
-            int size=d.size();
-            for(int i=0;i<size;i++){
-                TreeNode t=d.poll();
-                if(t.left!=null) d.offer(t.left);
-                if(t.right!=null) d.offer(t.right);
+        int deepth = 0;
+        while (!d.isEmpty()) {
+            int size = d.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode t = d.poll();
+                if (t.left != null) d.offer(t.left);
+                if (t.right != null) d.offer(t.right);
             }
             deepth++;
         }
@@ -125,21 +120,16 @@ public class TreeTransversal {
     }
 
 
-
-
-
-
-
-
     // judge if the tree is Symmetric??
     public static boolean isSymmetric(TreeNode root) {
         return check(root.left, root.right);
     }
+
     public static boolean check(TreeNode left, TreeNode right) {
         if (left == null && right == null) return true;
         if (right == null || left == null) return false;
-        if(left.value!=right.value) return false;
-        return check(left.left,right.right) && check(left.right,right.left);
+        if (left.value != right.value) return false;
+        return check(left.left, right.right) && check(left.right, right.left);
     }
 
 
@@ -167,4 +157,39 @@ public class TreeTransversal {
         System.out.print(root.value + "\t");
         postorder(root.left);
     }
+
+
+    //      Definition for singly-linked list.
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
+    class Solution {
+        public ListNode reverseList(ListNode head) {
+            if (head == null) return null;
+            ListNode pointer = head;
+            ListNode result = null;
+            while (pointer != null) {
+                result = new ListNode(pointer.val, result);
+                pointer = pointer.next;
+            }
+            return result;
+        }
+
+    }
+
+
 }
