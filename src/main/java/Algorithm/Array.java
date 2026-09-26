@@ -139,6 +139,27 @@ public class Array {
         }
 
 
+        //189. 轮转数组
+        class Solution5 {
+            public void rotate(int[] nums, int k) {
+                Deque<Integer> d1=new ArrayDeque<>();
+                Deque<Integer> d2=new ArrayDeque<>();
+                if(nums.length<=k) k=k%nums.length;
+                for(int i=0;i<nums.length-k;i++){
+                    d1.add(nums[i]);
+                }
+                for(int i=nums.length-k;i<nums.length;i++){
+                    d2.add(nums[i]);
+                }
+                int length1=d2.size();
+                for(int i=0;i<length1;i++){
+                    nums[i]=d2.poll();
+                }
+                for(int i=length1;i<nums.length;i++){
+                    nums[i]=d1.poll();
+                }
+            }
+        }
 
 
 
