@@ -163,6 +163,26 @@ public class Array {
 
 
 
+        //392. 判断子序列
+        class Solution6 {
+            public boolean isSubsequence(String s, String t) {
+                if(s==null || t==null) return false;
+                if(s.length()>t.length()) return false;
+                if(s.length()==0) return true;
+                char[] cs=s.toCharArray();
+                char[] ct=t.toCharArray();
+                int i=0;
+                int l=cs.length;
+                for(int j=0;j<ct.length;j++){
+                    if(cs[i]==ct[j]){
+                        i++;
+                    }
+                    if(i==l) return true;
+                }
+                if(i==l) return true;
+                else return false;
+            }
+        }
 
 
 
