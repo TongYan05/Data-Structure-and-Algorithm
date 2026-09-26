@@ -1,8 +1,6 @@
 package Algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Array {
     static void main(String[] args) {
@@ -121,6 +119,24 @@ public class Array {
         }
 
 
+        //41. 缺失的第一个正数
+        class Solution4 {
+            public int firstMissingPositive(int[] nums) {
+                Set<Integer> set=new TreeSet<>();
+                for(int i=0;i<nums.length;i++){
+                    if(nums[i]<=0) continue;
+                    set.add(nums[i]);
+                }
+                int acc=1;
+                for(int x : set){
+                    if(x==acc){
+                        acc++;
+                    }
+                    else break;
+                }
+                return acc;
+            }
+        }
 
 
 
@@ -132,3 +148,10 @@ public class Array {
 
     }
 }
+
+/*
+git add .
+git commit -m "Array"
+git push
+
+ */
