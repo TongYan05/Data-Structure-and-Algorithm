@@ -57,6 +57,23 @@ public class Stack {
 
 
 
+        //739. 每日温度
+        class Solution {
+            public int[] dailyTemperatures(int[] temperatures) {
+                int i=0;
+                int size=temperatures.length;
+                int[] result =new int[size];
+                Deque<Integer> q = new ArrayDeque<>();
+                for(int j=0;j<size;j++){
+                    while(!q.isEmpty() && temperatures[j]>temperatures[q.peek()] ){
+                        int index=q.pop();
+                        result[index]=j-index;
+                    }
+                    q.push(j);
+                }
+                return result;
+            }
+        }
 
 
 
@@ -64,3 +81,8 @@ public class Stack {
 
     }
 }
+/*
+git add .
+git commit -m "stack"
+git push
+ */
