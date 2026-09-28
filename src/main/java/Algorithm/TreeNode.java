@@ -1,9 +1,15 @@
 package Algorithm;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class TreeNode {
     public int value;
     public TreeNode left;
     public TreeNode right;
+    private Integer val;
 
     TreeNode() {
     }
@@ -73,5 +79,52 @@ public class TreeNode {
         }
 
 
+
+        //199. 二叉树的右视图
+        /**
+         * Definition for a binary tree node.
+         * public class TreeNode {
+         *     int val;
+         *     TreeNode left;
+         *     TreeNode right;
+         *     TreeNode() {}
+         *     TreeNode(int val) { this.val = val; }
+         *     TreeNode(int val, TreeNode left, TreeNode right) {
+         *         this.val = val;
+         *         this.left = left;
+         *         this.right = right;
+         *     }
+         * }
+         */
+        class Solution {
+            public List<Integer> rightSideView(TreeNode root) {
+                if(root==null) return new ArrayList<>();
+                List<Integer> list=new ArrayList<>();
+                Queue<TreeNode> q=new LinkedList<>();
+                q.offer(root);
+                while(!q.isEmpty()){
+                    int size=q.size();
+                    TreeNode t=null;
+                    for(int i=0;i<size;i++){
+                        t=q.poll();
+                        if(i==size-1){
+                            list.add(t.val);
+                        }
+                        if(t.left!=null) q.offer(t.left);
+                        if(t.right!=null) q.offer(t.right);
+                    }
+                }
+                return list;
+            }
+        }
+
+
+
     }
 }
+/*
+git add .
+git commit -m "treenode"
+git push
+
+ */
