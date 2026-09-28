@@ -3,6 +3,7 @@ package Algorithm;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.swing.text.html.HTML;
 import java.security.Principal;
+import java.util.Arrays;
 
 public class BinarySearch {
     public static void main(String[] args) {
@@ -114,9 +115,31 @@ public class BinarySearch {
     }
 
 
+    //4. 寻找两个正序数组的中位数
+    class Solution2 {
+        public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+            int[] arr=new int[nums1.length+nums2.length];
+            System.arraycopy(nums1,0,arr,0,nums1.length);
+            System.arraycopy(nums2,0,arr,nums1.length,nums2.length);
+            Arrays.sort(arr);
+            if(arr.length%2==0){
+                return (arr[arr.length/2]+arr[arr.length/2-1])/2.0;
+            }else{
+                return arr[arr.length/2];
+            }
+        }
+    }
+
 
 
 
 
 
 }
+/*
+git add .
+git commit -m "binary search"
+git push
+
+
+ */
