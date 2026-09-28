@@ -60,16 +60,14 @@ public class Stack {
         //739. 每日温度
         class Solution {
             public int[] dailyTemperatures(int[] temperatures) {
-                int i=0;
-                int size=temperatures.length;
-                int[] result =new int[size];
-                Deque<Integer> q = new ArrayDeque<>();
-                for(int j=0;j<size;j++){
-                    while(!q.isEmpty() && temperatures[j]>temperatures[q.peek()] ){
-                        int index=q.pop();
-                        result[index]=j-index;
+                Deque<Integer> d=new ArrayDeque<>();
+                int[] result=new int[temperatures.length];
+                for(int i=0;i<temperatures.length;i++){
+                    while(!d.isEmpty() && temperatures[i]>temperatures[d.peek()]){
+                        int index=d.pop();
+                        result[index]=i-index;
                     }
-                    q.push(j);
+                    d.push(i);
                 }
                 return result;
             }
