@@ -1,5 +1,7 @@
 package Algorithm;
 
+import java.util.Arrays;
+
 public class DynamicPlan {
 
     //198. 打家劫舍
@@ -19,6 +21,22 @@ public class DynamicPlan {
     }
 
 
+    //322. 零钱兑换
+    class Solution2 {
+        public int coinChange(int[] coins, int amount) {
+            int[] eachAmount=new int[amount+1];
+            Arrays.fill(eachAmount,amount+1);
+            eachAmount[0]=0;
+            for(int i=1;i<amount+1;i++){
+                for(int x : coins){
+                    if(x <= i){
+                        eachAmount[i]=Math.min(eachAmount[i],eachAmount[i-x]+1);
+                    }
+                }
+            }
+            return eachAmount[amount]>amount ? -1 : eachAmount[amount];
+        }
+    }
 
 
 
@@ -30,3 +48,8 @@ public class DynamicPlan {
 
 
 }
+/*
+git add .
+git commit -m "dynamic plan"
+git push
+ */
