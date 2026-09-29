@@ -1,8 +1,6 @@
 package Algorithm;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.Queue;
 
 public class TreeNode {
@@ -117,6 +115,76 @@ public class TreeNode {
                 return list;
             }
         }
+
+
+
+        //hard 114. 二叉树展开为链表
+        /**
+         * Definition for a binary tree node.
+         * public class TreeNode {
+         *     int val;
+         *     TreeNode left;
+         *     TreeNode right;
+         *     TreeNode() {}
+         *     TreeNode(int val) { this.val = val; }
+         *     TreeNode(int val, TreeNode left, TreeNode right) {
+         *         this.val = val;
+         *         this.left = left;
+         *         this.right = right;
+         *     }
+         * }
+         */
+        class Solution7 {
+            public void flatten(TreeNode root) {
+                if(root==null) return;
+                TreeNode pointer=root;
+                Deque<TreeNode> d=new ArrayDeque<>();
+                TreeNode result=null;
+                d.push(root);
+                while(!d.isEmpty()){
+                    TreeNode node=d.pop();
+                    if(result!=null){
+                        result.right=node;
+                        result.left=null;
+                    }
+                    if(node.right!=null) d.push(node.right);
+                    if(node.left!=null) d.push(node.left);
+                    result=node;
+                }
+            }
+        }
+
+
+
+
+
+        //236. 二叉树的最近公共祖先
+        /**
+         * Definition for a binary tree node.
+         * public class TreeNode {
+         *     int val;
+         *     TreeNode left;
+         *     TreeNode right;
+         *     TreeNode(int x) { val = x; }
+         * }
+         */
+        class Solution6 {
+            public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+                if(root == null || root == p || root == q) return root;
+                TreeNode left=lowestCommonAncestor(root.left,p,q);
+                TreeNode right=lowestCommonAncestor(root.right,p,q);
+                if(right!=null && left!=null){
+                    return root;
+                }else if(right==null && left!=null){
+                    return left;
+                }else{
+                    return right;
+                }
+
+            }
+        }
+
+
 
 
 
