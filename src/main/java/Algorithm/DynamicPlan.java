@@ -81,6 +81,21 @@ public class DynamicPlan {
         }
     }
 
+    //279. 完全平方数 和零钱兑换一样的类型，得花时间搞懂
+    class Solution4 {
+        public int numSquares(int n) {
+            int[] nums=new int[n+1];
+            Arrays.fill(nums,n+1);
+            nums[0]=0;
+            int min=0;
+            for(int i=0;i*i<n+1;i++){
+                for(int j=i*i;j<n+1;j++){
+                    nums[j]=Math.min(nums[j-i*i]+1,nums[j]);
+                }
+            }
+            return nums[n];
+        }
+    }
 
 
 
