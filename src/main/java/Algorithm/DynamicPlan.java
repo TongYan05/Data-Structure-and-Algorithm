@@ -39,29 +39,47 @@ public class DynamicPlan {
     }
 
 
-//    //300. 最长递增子序列
-//    class Solution {
-//        public int lengthOfLIS(int[] nums) {
-//            if(nums==null || nums.length==0) return 0;
-//            int[] result=new int[nums.length];
-//            result[0]=1;
-//            int MaxLength=1;
-//            for(int i=0;i<nums.length;i++){
-//                result[i]=1;
-//                for(int j=0;j<i;j++){
-//                    if(nums[i]>nums[j]){
-//                        int max=Math.max(result[j]+1,result[i]);
-//                        result[i]=max;
-//                    }
-//                    MaxLength=Math.max(MaxLength,result[i]);
-//                }
-//            }
-//            return MaxLength;
-//        }
-//    }
+    //300. 最长递增子序列
+    class Solution {
+        public int lengthOfLIS(int[] nums) {
+            if(nums==null || nums.length==0) return 0;
+            int[] result=new int[nums.length];
+            result[0]=1;
+            int MaxLength=1;
+            for(int i=0;i<nums.length;i++){
+                result[i]=1;
+                for(int j=0;j<i;j++){
+                    if(nums[i]>nums[j]){
+                        int max=Math.max(result[j]+1,result[i]);
+                        result[i]=max;
+                    }
+                    MaxLength=Math.max(MaxLength,result[i]);
+                }
+            }
+            return MaxLength;
+        }
+    }
 
 
-
+    //152. 乘积最大子数组
+    class Solution3 {
+        public int maxProduct(int[] nums) {
+            if(nums.length==1) return nums[0];
+            int max=nums[0];
+            int[] arrMax=new int[nums.length];
+            int[] arrMin=new int[nums.length];
+            arrMax[0]=nums[0];
+            arrMin[0]=nums[0];
+            for(int i=1;i<nums.length;i++){
+                int preMax=arrMax[i-1];
+                int preMin=arrMin[i-1];
+                arrMax[i]=Math.max(Math.max(nums[i],nums[i]*preMax),nums[i]*preMin);
+                arrMin[i]=Math.min(Math.min(nums[i],nums[i]*preMax),nums[i]*preMin);
+                max=Math.max(max,arrMax[i]);
+            }
+            return max;
+        }
+    }
 
 
 
