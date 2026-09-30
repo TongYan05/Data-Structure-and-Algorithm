@@ -39,26 +39,26 @@ public class DynamicPlan {
     }
 
 
-    //300. 最长递增子序列
-    class Solution {
-        public int lengthOfLIS(int[] nums) {
-            if(nums==null || nums.length==0) return 0;
-            int[] result=new int[nums.length];
-            result[0]=1;
-            int MaxLength=1;
-            for(int i=0;i<nums.length;i++){
-                result[i]=1;
-                for(int j=0;j<i;j++){
-                    if(nums[i]>nums[j]){
-                        int max=Math.max(result[j]+1,result[i]);
-                        result[i]=max;
-                    }
-                    MaxLength=Math.max(MaxLength,result[i]);
-                }
-            }
-            return MaxLength;
-        }
-    }
+//    //300. 最长递增子序列
+//    class Solution {
+//        public int lengthOfLIS(int[] nums) {
+//            if(nums==null || nums.length==0) return 0;
+//            int[] result=new int[nums.length];
+//            result[0]=1;
+//            int MaxLength=1;
+//            for(int i=0;i<nums.length;i++){
+//                result[i]=1;
+//                for(int j=0;j<i;j++){
+//                    if(nums[i]>nums[j]){
+//                        int max=Math.max(result[j]+1,result[i]);
+//                        result[i]=max;
+//                    }
+//                    MaxLength=Math.max(MaxLength,result[i]);
+//                }
+//            }
+//            return MaxLength;
+//        }
+//    }
 
 
 
