@@ -2,9 +2,7 @@ package Algorithm;
 
 import jdk.dynalink.linker.GuardedInvocationTransformer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class SlidingWindow {
 
@@ -265,6 +263,42 @@ n 方法数
     }
 
 
+    //239. 滑动窗口最大值
+    //hard!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    class Solution11 {
+        public int[] maxSlidingWindow(int[] nums, int k) {
+            if (nums == null || nums.length == 0 || k <= 0) {
+                return new int[0];
+            }
+
+            int n = nums.length;
+            int[] result = new int[n - k + 1];
+            // 双端队列存储下标，保持队列中对应值单调递减
+            Deque<Integer> deque = new ArrayDeque<>();
+
+            for (int i = 0; i < n; i++) {
+                // 1. 移除超出窗口左边界的下标（队头过期）
+                while (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
+                    deque.pollFirst();
+                }
+
+                // 2. 维护单调递减：新元素 >= 队尾对应值时，队尾不可能再成为最大值
+                while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
+                    deque.pollLast();
+                }
+
+                // 3. 当前下标入队（从队尾加入）
+                deque.addLast(i);
+
+                // 4. 当窗口形成后，队头即为当前窗口最大值的下标
+                if (i >= k - 1) {
+                    result[i - k + 1] = nums[deque.peekFirst()];
+                }
+            }
+
+            return result;
+        }
+    }
 
 }
 /*
