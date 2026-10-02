@@ -222,7 +222,6 @@ public class SlidingWindow {
             return nums[n];
         }
     }
-}
 /*
 
 n 方法数
@@ -237,9 +236,33 @@ n 方法数
 9	55
 10	89
 11	144
-*
+*/
 
 
+    //438. 找到字符串中所有字母异位词
+    class Solution10 {
+        public List<Integer> findAnagrams(String s, String p) {
+            List<Integer> list=new ArrayList<>();
+            if(s==null || p == null || s.length()<p.length() ) return list;//judge the length last because the nullpointerexception!!
+            int[] letterTimesInp=new int[26];
+            int[] letterTimesIns=new int[26];
+            for(int i =0 ;i<p.length();i++){
+                letterTimesInp[p.charAt(i)-'a']++;//some letters might appear more than once
+                letterTimesIns[s.charAt(i)-'a']++;//so it is ++ , not =1
+            }
+            if(Arrays.equals(letterTimesInp,letterTimesIns)){
+                list.add(0);
+            }
+            for(int i=0;i<s.length()-p.length();i++){
+                letterTimesIns[s.charAt(i)-'a']--;
+                letterTimesIns[s.charAt(i+p.length())-'a']++;
+                if(Arrays.equals(letterTimesInp,letterTimesIns)){
+                    list.add(i+1);//it is i+1 , because the pointer has moved to right by one unit
+                }
+            }
+            return list;
+        }
+    }
 
 
 
