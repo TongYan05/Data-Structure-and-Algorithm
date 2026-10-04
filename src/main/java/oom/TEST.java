@@ -1,8 +1,11 @@
 package oom;
 
+import javax.swing.*;
 import javax.xml.transform.Source;
 import java.security.PublicKey;
 import java.sql.SQLOutput;
+import java.util.Arrays;
+import java.util.Collections;
 
 class test1 {
     public int a=1;
@@ -33,9 +36,19 @@ public class TEST {
 //        test2 t2=new test2();
 //        System.out.println(t1==t11);
 
+        Double x=1.0;
+        x++;
+        System.out.println(x);
+
         test1 t1 =new test1();
         test1 t2 =new test2();
         System.out.println(t1.a+" "+t2.a);//instance field do not have dynamic binding
+
+
+        int[] arr={2,3,6,1,6,21,4};
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+
     }
 
     public static void print(int... nums) {
