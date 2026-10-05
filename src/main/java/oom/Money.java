@@ -55,10 +55,15 @@ public class Money implements Comparable<Money> {
     }
 
     static void main(String[] args) {
-        System.out.println(find());
+//        System.out.println(find());
 
         System.out.println(new Object() instanceof String);
-        System.out.println(Double instanceof String);
+        Object o = "hello";
+        if (o instanceof String s) System.out.print(s.length());
+        if (o instanceof String s) System.out.print(" again");
+        String s = null;
+        System.out.println(s instanceof Object);
+//        System.out.println(Double instanceof String);
     }
 
     public static List find() {
